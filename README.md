@@ -41,6 +41,7 @@ pip install -r requirements.txt
 ### 2. Jalankan Notebook
 
 Buka `notebook.ipynb` di Jupyter Notebook/Lab atau VS Code, lalu jalankan semua cell dari awal sampai akhir. Notebook ini akan:
+
 - Melakukan EDA dan preprocessing data
 - Melatih model Content-Based dan Collaborative Filtering
 - Mengevaluasi model (NDCG@10)
@@ -56,11 +57,11 @@ Buka browser dan akses `http://127.0.0.1:5000`
 
 ## 📊 Metrik Evaluasi
 
-| Metrik | Target | Hasil |
-|--------|--------|-------|
-| NDCG@10 | >= 0.75 | TBD |
-| RMSE | - | TBD |
-| MAE | - | TBD |
+| Metrik  | Target  | Hasil  |
+| ------- | ------- | ------ |
+| NDCG@10 | >= 0.75 | 0.9718 |
+| RMSE    | -       | 1.5920 |
+| MAE     | -       | 1.2241 |
 
 ## 📂 Struktur Project
 
