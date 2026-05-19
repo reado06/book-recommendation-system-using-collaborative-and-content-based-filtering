@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Rekomendasi untuk User {{ user_id }} — Sistem Rekomendasi Perpustakaan{% endblock %}
+
+{% block content %}
+<section class="recommend-header">
+    <a href="{{ url_for('main.index') }}" class="back-link">← Kembali ke Home</a>
+    <h1>📖 Rekomendasi untuk User #{{ user_id }}</h1>
+</section>
+
+{% if history %}
+<section class="history-section">
+    <h2>📚 Buku yang Pernah Anda Baca</h2>
+    <div class="history-grid">
+        {% for book in history %}
+        <div class="history-card">
+            <div class="history-info">
+                <h4>{{ book.title[:80] }}{% if book.title|length > 80 %}...{% endif %}</h4>
+                <p>{{ book.author }}</p>
+            </div>
+            <div class="history-rating">
+                <span class="rating-badge">⭐ {{ book.rating }}/10</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<section class="recommend-section">
+    <h2>🎯 Top 10 Rekomendasi Buku untuk Anda</h2>
+    <p class="section-desc">Berdasarkan Hybrid Recommender (Collaborative + Content-Based Filtering)</p>
+
+    {% if recommendations %}
+    <div class="recommend-grid">
+        {% for book in recommendations %}
+        <div class="recommend-card">
+            <div class="rank-badge">#{{ loop.index }}</div>
+            <div class="recommend-cover">
+                <span class="book-emoji">📗</span>
+            </div>
+            <div class="recommend-info">
+                <h3 class="book-title" title="{{ book.title }}">{{ book.title[:70] }}{% if book.title|length > 70 %}...{% endif %}</h3>
+                <p class="book-author">✍️ {{ book.author }}</p>
+                <div class="book-meta">
+                    <span class="book-year">📅 {{ book.year }}</span>
+                    {% if book.score %}
+                    <span class="book-score">Score: {{ book.score }}</span>
+                    {% elif book.avg_rating %}
+                    <span class="book-score">⭐ {{ book.avg_rating }} ({{ book.rating_count }} ulasan)</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <p>😕 User ID <strong>{{ user_id }}</strong> tidak ditemukan atau belum memiliki data rating.</p>
+        <a href="{{ url_for('main.index') }}" class="btn-primary">Coba User ID lain</a>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

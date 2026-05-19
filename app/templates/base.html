@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}Sistem Rekomendasi Perpustakaan{% endblock %}
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a href="{{ url_for('main.index') }}" class="nav-brand">
+          <span class="nav-icon">📚</span> Sistem Rekomendasi Perpustakaan
+        </a>
+        <div class="nav-links">
+          <a href="{{ url_for('main.index') }}">Home</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">{% block content %}{% endblock %}</main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          Sistem Rekomendasi Perpustakaan &copy; 2026 — Hybrid Recommender
+          (Collaborative + Content-Based Filtering)
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

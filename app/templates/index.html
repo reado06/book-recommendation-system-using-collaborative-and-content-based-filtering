@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Home — Sistem Rekomendasi Perpustakaan{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>📖 Sistem Rekomendasi Perpustakaan</h1>
+    <p class="hero-subtitle">Temukan buku yang sesuai dengan minat Anda menggunakan teknologi Hybrid Recommender</p>
+
+    <form action="{{ url_for('main.recommend') }}" method="POST" class="search-form">
+        <div class="search-box">
+            <input type="number" name="user_id" placeholder="Masukkan User ID (contoh: 276725)" required min="1" id="user-id-input">
+            <button type="submit" id="btn-recommend">🔍 Dapatkan Rekomendasi</button>
+        </div>
+    </form>
+</section>
+
+<section class="popular-section">
+    <h2>🌟 Buku Populer</h2>
+    <p class="section-desc">Buku dengan rating tertinggi dari para pembaca</p>
+
+    <div class="book-grid">
+        {% for book in popular_books %}
+        <div class="book-card">
+            <div class="book-cover">
+                <span class="book-emoji">📘</span>
+            </div>
+            <div class="book-info">
+                <h3 class="book-title" title="{{ book.title }}">{{ book.title[:60] }}{% if book.title|length > 60 %}...{% endif %}</h3>
+                <p class="book-author">{{ book.author }}</p>
+                <div class="book-meta">
+                    <span class="book-year">📅 {{ book.year }}</span>
+                    <span class="book-rating">⭐ {{ book.avg_rating }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
