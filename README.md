@@ -34,9 +34,28 @@ Dataset/
 
 ### 1. Install Dependencies
 
+**⚠️ PENTING (Khusus Pengguna Windows)**
+Library `scikit-surprise` tidak memiliki *pre-built wheel* untuk Python versi terbaru di Windows, sehingga membutuhkan *C++ compiler* untuk diinstal. Terdapat dua opsi yang bisa dilakukan sebelum menginstall dependencies:
+
+**Opsi 1: Microsoft C++ Build Tools (Sudah Diuji & Berhasil)**
+1. Download **[Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)**.
+2. Jalankan installer dan centang pilihan **"Desktop development with C++"**.
+   *(Perhatian: Ukuran download file sekitar 2 GB dan memakan penyimpanan sekitar 6-7 GB setelah di-extract).*
+3. Setelah proses instalasi selesai, **restart komputer/laptop** Anda.
+
+**Opsi 2: Miniconda / Anaconda (Alternatif - Belum Diuji)**
+Jika tidak ingin mendownload file sebesar 6 GB, alternatifnya adalah menggunakan environment Conda:
+```bash
+conda install -c conda-forge scikit-surprise
+```
+
+Setelah menyelesaikan salah satu prerequisite di atas (atau jika Anda menggunakan Linux/Mac), jalankan instalasi *requirements* utama:
+
 ```bash
 pip install -r requirements.txt
 ```
+
+*(Catatan: File `requirements.txt` ini sudah disesuaikan untuk menggunakan `numpy<2` guna menghindari error "compiled using NumPy 1.x cannot be run in NumPy 2.x").*
 
 ### 2. Jalankan Notebook
 
