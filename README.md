@@ -32,7 +32,23 @@ Dataset/
 
 ## 🚀 Cara Menjalankan
 
-### 1. Install Dependencies
+### 1. Buat Virtual Environment (.venv)
+
+Sangat disarankan menggunakan virtual environment agar library tidak bentrok. Buka terminal di folder project ini, lalu jalankan:
+
+**Windows:**
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+**Linux/Mac:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 2. Install Dependencies
 
 **⚠️ PENTING (Khusus Pengguna Windows)**
 Library `scikit-surprise` tidak memiliki *pre-built wheel* untuk Python versi terbaru di Windows, sehingga membutuhkan *C++ compiler* untuk diinstal. Terdapat dua opsi yang bisa dilakukan sebelum menginstall dependencies:
@@ -57,7 +73,7 @@ pip install -r requirements.txt
 
 *(Catatan: File `requirements.txt` ini sudah disesuaikan untuk menggunakan `numpy<2` guna menghindari error "compiled using NumPy 1.x cannot be run in NumPy 2.x").*
 
-### 2. Jalankan Notebook
+### 3. Jalankan Notebook
 
 Buka `notebook.ipynb` di Jupyter Notebook/Lab atau VS Code, lalu jalankan semua cell dari awal sampai akhir. Notebook ini akan:
 
@@ -66,7 +82,7 @@ Buka `notebook.ipynb` di Jupyter Notebook/Lab atau VS Code, lalu jalankan semua 
 - Mengevaluasi model (NDCG@10)
 - Meng-export model ke folder `models/`
 
-### 3. Jalankan Web App
+### 4. Jalankan Web App
 
 ```bash
 python run.py
